@@ -25,6 +25,7 @@ public class VenDetail {
 	private Stage stage;
 	private VennerOgBekendte venner;
 	private VenOversigt oversigt;
+	private VenTypeConverter converter = new VenTypeConverter();
 	
 	private ChoiceBox<VenType> choiceType;
 	private TextField textNavn;
@@ -68,7 +69,7 @@ public class VenDetail {
 	    GridPane.setHalignment(labelType, HPos.RIGHT);
 	    choiceType = new ChoiceBox<>();	
 	    choiceType.getItems().setAll(VenType.values());
-	    choiceType.setConverter(new VenTypeConverter());
+	    choiceType.setConverter(converter);
 	    grid.add(choiceType, 1, 0);
 	    Label labelEmail = new Label("Email : ");
 	    grid.add(labelEmail, 0, 1);
@@ -87,7 +88,7 @@ public class VenDetail {
 	    grid.add(textTelefon, 1, 3);
 	    
 	    if (venFx != null) {
-	    	choiceType.setValue(venFx.getVentype());
+	    	choiceType.setValue(converter.fromString(venFx.getType()));
 		    textEmail.setEditable(false);
 	    	textEmail.setText(venFx.getEmail());
 	    	textNavn.setText(venFx.getNavn());
@@ -140,11 +141,10 @@ public class VenDetail {
 		Ven nyven = new Ven(choiceType.getValue(), textNavn.getText(), textEmail.getText(), textTelefon.getText());
 		boolean rc = venner.opdater(nyven);
 		if (rc) {
-			venFx.setType(new VenTypeConverter().toString(choiceType.getValue()));
+			venFx.setType(converter.toString(choiceType.getValue()));
 			venFx.setNavn(textNavn.getText());
 			venFx.setEmail(textEmail.getText());
 			venFx.setTelefon(textTelefon.getText());
-			venFx.setVentype(choiceType.getValue());
 			oversigt.refreshTable();
 			Alert alert = new Alert(AlertType.INFORMATION, "Ven opdateret", ButtonType.OK);
 			alert.showAndWait();

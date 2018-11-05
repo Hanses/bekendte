@@ -6,8 +6,17 @@ import logic.VenType;
 public class VenTypeConverter extends StringConverter<VenType>{
 
 	@Override
-	public VenType fromString(String arg0) {
-		return null;
+	public VenType fromString(String type) {
+		switch (type) {
+		case "Ven":
+			return VenType.FRIEND;
+		case "Fjende":
+			return VenType.ENEMY;
+		case "Familie":
+			return VenType.FAMILY;
+		default:
+			return null;
+		}
 	}
 
 	@Override

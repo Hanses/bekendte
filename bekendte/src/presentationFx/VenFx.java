@@ -3,7 +3,6 @@ package presentationFx;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import logic.Ven;
-import logic.VenType;
 
 public class VenFx {
 
@@ -11,14 +10,12 @@ public class VenFx {
 	private StringProperty navn = new SimpleStringProperty(this, "navn");
 	private StringProperty email = new SimpleStringProperty(this, "email");
 	private StringProperty telefon = new SimpleStringProperty(this, "telefon");
-	private VenType ventype;
 	
 	public VenFx(Ven ven) {
 		setType(new VenTypeConverter().toString(ven.getType()));
 		setNavn(ven.getNavn());
 		setEmail(ven.getEmail());
 		setTelefon(ven.getTelefon());
-		setVentype(ven.getType());
 	}
 
 	public String getType() {
@@ -52,14 +49,5 @@ public class VenFx {
 	public void setTelefon(String telefon) {
 		this.telefon.set(telefon);
 	}
-
-	public VenType getVentype() {
-		return ventype;
-	}
-
-	public void setVentype(VenType ventype) {
-		this.ventype = ventype;
-	}
-	
 
 }
