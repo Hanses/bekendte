@@ -14,7 +14,7 @@ public class VenFx {
 	private VenType ventype;
 	
 	public VenFx(Ven ven) {
-		setType(ven.getType().toString());
+		setType(new VenTypeConverter().toString(ven.getType()));
 		setNavn(ven.getNavn());
 		setEmail(ven.getEmail());
 		setTelefon(ven.getTelefon());
