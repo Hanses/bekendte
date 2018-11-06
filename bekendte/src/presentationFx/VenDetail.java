@@ -128,11 +128,11 @@ public class VenDetail {
 		if (rc) {
 			VenFx nyvenFx = new VenFx(nyven);
 			oversigt.addVenToTable(nyvenFx);
-			Alert alert = new Alert(AlertType.INFORMATION, "Ven oprettet", ButtonType.OK);
+			Alert alert = new Alert(AlertType.INFORMATION, "Ven " + nyven.getNavn() + " oprettet", ButtonType.OK);
 			alert.showAndWait();
 			stage.close();
 		} else {
-			Alert alert = new Alert(AlertType.ERROR, "Ven ikke oprettet", ButtonType.OK);
+			Alert alert = new Alert(AlertType.ERROR, "Ven " + nyven.getNavn() + " ikke oprettet", ButtonType.OK);
 			alert.showAndWait();
 		}	
 	}
@@ -146,11 +146,11 @@ public class VenDetail {
 			venFx.setEmail(textEmail.getText());
 			venFx.setTelefon(textTelefon.getText());
 			oversigt.refreshTable();
-			Alert alert = new Alert(AlertType.INFORMATION, "Ven opdateret", ButtonType.OK);
+			Alert alert = new Alert(AlertType.INFORMATION, "Ven " + nyven.getNavn() + " opdateret", ButtonType.OK);
 			alert.showAndWait();
 			stage.close();
 		} else {
-			Alert alert = new Alert(AlertType.ERROR, "Ven ikke opdateret", ButtonType.OK);
+			Alert alert = new Alert(AlertType.ERROR, "Ven " + nyven.getNavn() + " ikke opdateret", ButtonType.OK);
 			alert.showAndWait();
 		}
 	}

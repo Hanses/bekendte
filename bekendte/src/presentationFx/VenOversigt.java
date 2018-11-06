@@ -127,7 +127,7 @@ public class VenOversigt {
 		if (tabel != null) {
 			VenFx venFx = tabel.getSelectionModel().getSelectedItem();
 			if (venFx != null) {
-				Alert alert = new Alert(AlertType.CONFIRMATION, "Slet ven ?", ButtonType.YES, ButtonType.NO);
+				Alert alert = new Alert(AlertType.CONFIRMATION, "Slet " + venFx.getNavn() + " ?", ButtonType.YES, ButtonType.NO);
 				alert.showAndWait();
 				if (alert.getResult() == ButtonType.YES) {
 					boolean rc = venner.slet(venFx.getEmail());
