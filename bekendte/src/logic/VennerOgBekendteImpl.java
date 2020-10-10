@@ -4,11 +4,19 @@ import java.io.IOException;
 
 import data.Container;
 import data.VenContainer;
+import data.VenData;
 
 public class VennerOgBekendteImpl implements VennerOgBekendte {
 
-	private VenContainer venner = new VenContainer("dbfile.csv");
+	private VenData venner = null;
 
+	public VennerOgBekendteImpl() {
+		venner = new VenContainer();
+	}
+	
+	VennerOgBekendteImpl(VenData venner) {
+		this.venner = venner;
+	}
 	@Override
 	public boolean opret(Ven ven) {
 		Ven glven = hent(ven.getEmail());

@@ -12,13 +12,17 @@ import java.util.List;
 import logic.Ven;
 import logic.VenType;
 
-public class VenContainer {
+public class VenContainer implements VenData {
 
 	private List<Ven> venneListe = new ArrayList<>();
 	private String dbfile = null;
 	
 	public VenContainer() {
-		this.dbfile = null;
+		this.dbfile = "bekendte/dbfile.csv";
+		try {
+			rollback();
+		} catch (IOException e) {
+		}
 	}
 	
 	public VenContainer(String dbfile) {
@@ -29,27 +33,32 @@ public class VenContainer {
 		}
 	}
 	
-		
+	@Override	
 	public void addElement(Ven ven) {
 		venneListe.add(ven);
 	}
 	
+	@Override	
 	public Ven getElement(int i) {
 		return venneListe.get(i);
 	}
 	
+	@Override	
 	public void removeElement(int i) {
 		venneListe.remove(i);
 	}
 	
+	@Override	
 	public void replaceElement(int i, Ven ven) {
 		venneListe.set(i, ven);
 	}
 	
+	@Override	
 	public int size() {
 		return venneListe.size();
 	}
 	
+	@Override	
 	public void sort(Comparator<Ven> comparator) {
 		venneListe.sort(comparator);
 	}
@@ -72,6 +81,7 @@ public class VenContainer {
 //		}
 //	}
 	
+	@Override	
 	public void commit() throws IOException {
 		try (PrintWriter writer = new PrintWriter(new FileWriter(dbfile))) {
 			writer.println("type;navn;email;telefon");
@@ -81,7 +91,8 @@ public class VenContainer {
 		}
 	}
 	
-	public void rollback() throws IOException, IOException {
+	@Override	
+	public void rollback() throws IOException {
 		this.venneListe = new ArrayList<>();
 		try (BufferedReader reader = new BufferedReader(new FileReader(dbfile))) {
 			String csv = reader.readLine(); // Overskrift

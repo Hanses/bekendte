@@ -70,9 +70,9 @@ public class VenOversigt {
 		hbox.setPadding(new Insets(15, 12, 15, 12));
 		hbox.setSpacing(10);
 
-		Label labelSoeg = new Label("Indtast sÃ¸gekriterie : ");
+		Label labelSoeg = new Label("Indtast søgekriterie : ");
 		soeg = new TextField();
-		Button buttonSoeg = new Button("SÃ¸g");
+		Button buttonSoeg = new Button("Søg");
 		buttonSoeg.setOnAction(e -> procesSoeg());
 
 		hbox.getChildren().addAll(labelSoeg, soeg, buttonSoeg);
