@@ -12,12 +12,12 @@ import java.util.List;
 import logic.Ven;
 import logic.VenType;
 
-public class VenContainer implements VenData {
+public class VenDataImpl implements VenData {
 
 	private List<Ven> venneListe = new ArrayList<>();
 	private String dbfile = null;
 	
-	public VenContainer() {
+	public VenDataImpl() {
 		this.dbfile = "bekendte/dbfile.csv";
 		try {
 			rollback();
@@ -25,7 +25,7 @@ public class VenContainer implements VenData {
 		}
 	}
 	
-	public VenContainer(String dbfile) {
+	public VenDataImpl(String dbfile) {
 		this.dbfile = dbfile;
 		try {
 			rollback();

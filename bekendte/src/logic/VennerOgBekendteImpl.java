@@ -3,7 +3,7 @@ package logic;
 import java.io.IOException;
 
 import data.Container;
-import data.VenContainer;
+import data.VenDataImpl;
 import data.VenData;
 
 public class VennerOgBekendteImpl implements VennerOgBekendte {
@@ -11,7 +11,7 @@ public class VennerOgBekendteImpl implements VennerOgBekendte {
 	private VenData venner = null;
 
 	public VennerOgBekendteImpl() {
-		venner = new VenContainer();
+		venner = new VenDataImpl();
 	}
 	
 	VennerOgBekendteImpl(VenData venner) {
